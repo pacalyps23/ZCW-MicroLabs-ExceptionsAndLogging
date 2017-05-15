@@ -51,7 +51,7 @@ public final class PhoneNumberFactory
     {
         int area = ThreadLocalRandom.current().nextInt(100, 1000);
         int central = ThreadLocalRandom.current().nextInt(100, 1000);
-        int phone = ThreadLocalRandom.current().nextInt(100, 10000);
+        int phone = ThreadLocalRandom.current().nextInt(1000, 10000);
 
         return createPhoneNumberSafely(area, central, phone);
     }
