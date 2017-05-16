@@ -35,7 +35,7 @@ public final class PhoneNumberFactory
             PhoneNumber num = createRandomPhoneNumber();
             phoneList[i] = num;
         }
-        System.out.println(phoneList.length);
+        
         if(phoneList.length > 0)
         {
             return phoneList;
@@ -89,12 +89,21 @@ public final class PhoneNumberFactory
      * @return a new phone number object
      * @throws InvalidPhoneNumberFormatException - thrown if phoneNumberString does not match acceptable format
      */ // TODO - Add throws statement to method signature
-    public static PhoneNumber createPhoneNumber(String phoneNumberString) throws InvalidPhoneNumberFormatException
+    public static PhoneNumber createPhoneNumber(String phoneNumberString)
     {
 
-        logger.info("Attempting to create a new phone number "+ phoneNumberString);
 
 
-        return new PhoneNumber(phoneNumberString);
+
+        try
+        {
+            return new PhoneNumber(phoneNumberString);
+        }
+        catch (InvalidPhoneNumberFormatException e)
+        {
+            logger.info("Attempting to create a new phone number "+ phoneNumberString);
+            e.printStackTrace();
+        }
+        return null;
     }
 }
